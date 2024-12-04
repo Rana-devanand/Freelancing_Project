@@ -1,9 +1,34 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { NavLink, useNavigate, useParams } from 'react-router-dom'
+import axios from 'axios';
 
 function Signup() {
   const navigate = useNavigate();
   const {id} = useParams();
+  
+  const URL = "https://apitaassistant-app-2024102921080.nicecliff-6fd000a2.eastus2.azurecontainerapps.io/v1/Users/create";
+
+  const [formdata, setFormData] = useState({
+    email: "",
+    givenName: "",
+    phoneNumber: "",
+    password: "",
+    userTypeId: id,
+  });
+
+  const HandleChange = (e) => {
+    setFormData({ ...formdata, [e.target.name]: e.target.value });
+  };
+
+  const HandleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post(URL, formdata);
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <>
       <div className="flex justify-center items-center min-h-screen bg-gray-100">
@@ -11,7 +36,7 @@ function Signup() {
         <h2 className="text-xl font-bold text-gray-800 text-center mb-6">
         Instructor Signup
         </h2>
-        <form>
+        <form onSubmit={HandleSubmit}>
 
         <div className="mb-4">
             <label className="block text-gray-700 mb-2" htmlFor="email">
@@ -22,6 +47,8 @@ function Signup() {
               id="name"
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="Enter your Name"
+              name='name'
+              onChange={HandleChange}
               required
             />
           </div>
@@ -36,6 +63,8 @@ function Signup() {
               id="email"
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="Enter your email"
+              name="email"
+              onChange={HandleChange}
               required
             />
           </div>
@@ -50,6 +79,8 @@ function Signup() {
               id="text"
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="Enter your Phone Number"
+              name="phoneNumber"
+              onChange={HandleChange}
               required
             />
           </div>
@@ -66,6 +97,8 @@ function Signup() {
               id="password"
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="Enter your password"
+              name="password"
+              onChange={HandleChange}
               required
             />
           </div>
