@@ -23,13 +23,10 @@ const Login = () => {
     setIsLoading(true);
     try {
       const response = await axios.post(URL, formData);
-      if(response.status === 200) {
-        navigate(`/departments/dashboard`)
-      } 
+        navigate(`/departments/verify/${formData.email}`)
       setIsLoading(false);
     } catch (error) {
       setIsLoading(false);
-      navigate(`/departments/dashboard`)
       console.error(error);
     }
   };

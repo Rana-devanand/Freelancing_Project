@@ -25,12 +25,11 @@ const Login = () => {
     try {
       const response = await axios.post(URL, formData);
       if(response.status === 200) {
-        navigate(`/taapplicants/dashboard`)
+        navigate(`/taapplicants/verify/${formData.email}`)
       } 
       setIsLoading(false);
     } catch (error) {
       setIsLoading(false);
-      navigate(`/taapplicants/dashboard`)
       console.error(error);
     }
   };

@@ -14,6 +14,7 @@ import DepartmentRecords from "../Components/Department/Records";
 import DepartmentSelectionStatus from "../Components/Department/SelectionStatus";
 import DepartmentProfile from "../Components/Department/Profile";
 import DepartmentCreateCourse from "../Components/Department/CreateCourse"
+import DepartmentVerify from "../Components/Department/Verify";
 
 import TA_Applicant from "../Components/TA-applicant/Login";
 import TA_ApplicantSignup from "../Components/TA-applicant/Signup";
@@ -63,6 +64,7 @@ const Routers = () => {
         <Route path="/departments/selectionstatus" element={<DepartmentSelectionStatus />} />
         <Route path="/departments/profile" element={<DepartmentProfile />} />
         <Route path="/departments/createcourse" element={<DepartmentCreateCourse />} />
+        <Route path="/departments/verify/:email" element={<DepartmentVerify />} />
                 
         <Route path="/taapplicantlogin/:id" element={<TA_Applicant />} />
         <Route path="/taapplicantsignup/:id" element={<TA_ApplicantSignup />} />

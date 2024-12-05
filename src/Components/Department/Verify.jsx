@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 import { useNavigate, useParams } from 'react-router-dom';
-function verify() {
+function Verify() {
      const {email }= useParams();
      const navigate = useNavigate();
      const URL = "https://apitaassistant-app-2024102921080.nicecliff-6fd000a2.eastus2.azurecontainerapps.io/v1/Users/verify"
@@ -19,7 +19,7 @@ function verify() {
          try {
           const response = await axios.post(URL, verificationCode);
           console.log(response);
-          navigate('/taapplicants/dashboard')
+          navigate('/departments/dashboard')
          } catch (error) {
                console.log(error);
          }
@@ -52,4 +52,4 @@ function verify() {
   )
 }
 
-export default verify
+export default Verify
