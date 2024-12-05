@@ -3,6 +3,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 
 function Navbar() {
   const navigate = useNavigate();
+  const userName = localStorage.getItem('username')
   return (
     <>
       <header className="bg-gray-800 text-white shadow-md">
@@ -45,7 +46,7 @@ function Navbar() {
                to="/departments/profile"
                >
                     <img src="https://via.placeholder.com/30x30" alt="User Avatar" className="rounded-full" />
-                    Jhon
+                    {userName}
                </NavLink>
             </div>
             <button className="bg-red-500 text-white px-4 py-1 rounded-md hover:bg-red-600 transition"

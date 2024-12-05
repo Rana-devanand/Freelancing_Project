@@ -2,6 +2,11 @@ import React from "react";
 import Navbar from "./Navbar";
 
 function Profile() {
+    const userName = localStorage.getItem('username');
+    const userEmail = localStorage.getItem('email');
+    const role = localStorage.getItem('role');
+    const phoneNumber = localStorage.getItem('phoneNumber');
+
   return (
     <>
       <div className="min-h-screen flex flex-col">
@@ -26,19 +31,18 @@ function Profile() {
               {/* Profile Details */}
               <div className="space-y-3 text-gray-700">
                 <p>
-                  <span className="font-semibold">Username:</span> MadhuShalini
-                  Kotti
+                  <span className="font-semibold">Username:</span> {userName}
                 </p>
                 <p>
                   <span className="font-semibold">Email:</span>{" "}
-                  madhushalini@gmail.com
+                  {userEmail}
                 </p>
                 <p>
                   <span className="font-semibold">Z Number:</span> Z23744520
                 </p>
                 <p>
                   <span className="font-semibold">Phone Number:</span>{" "}
-                  09347876834
+                  {phoneNumber}
                 </p>
                 <p>
                   <span className="font-semibold">Department:</span> CS

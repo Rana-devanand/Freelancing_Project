@@ -18,7 +18,11 @@ function verify() {
          e.preventDefault();
          try {
           const response = await axios.post(URL, verificationCode);
-          console.log(response);
+          const responseData = response.data.data;
+          localStorage.setItem('username', responseData.givenName);
+          localStorage.setItem('email', responseData.email);
+          localStorage.setItem('role', responseData.userType);
+          localStorage.setItem('phoneNumber', responseData.phoneNumber);
           navigate('/taapplicants/dashboard')
          } catch (error) {
                console.log(error);
